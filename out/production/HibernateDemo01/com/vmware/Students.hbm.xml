@@ -5,10 +5,13 @@
 <hibernate-mapping>
 
     <class name="com.vmware.Students" table="Students" schema="hibernate">
-        <id name="sid" column="sid"/>
+        <id name="sid" column="sid">
+            <generator class="native"/>
+        </id>
         <property name="name" column="name"/>
         <property name="gender" column="gender"/>
         <property name="birthday" column="birthday"/>
         <property name="address" column="address"/>
+        <property name="picture" column="picture" />
     </class>
 </hibernate-mapping>

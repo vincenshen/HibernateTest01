@@ -19,7 +19,7 @@
     <schema id="5" parent="1" name="hibernate">
       <Current>1</Current>
       <Visible>1</Visible>
-      <Collation>latin1_swedish_ci</Collation>
+      <Collation>utf8_unicode_ci</Collation>
     </schema>
     <schema id="6" parent="1" name="hoho">
       <Collation>latin1_swedish_ci</Collation>
@@ -939,7 +939,9 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="238" parent="5" name="Students"/>
+    <table id="238" parent="5" name="Students">
+      <Engine>MyISAM</Engine>
+    </table>
     <column id="239" parent="238" name="sid">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
@@ -959,7 +961,7 @@
     </column>
     <column id="242" parent="238" name="birthday">
       <Position>4</Position>
-      <DataType>date|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="243" parent="238" name="address">
@@ -967,7 +969,12 @@
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="244" parent="238" name="PRIMARY">
+    <column id="244" parent="238" name="picture">
+      <Position>6</Position>
+      <DataType>longblob|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="245" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>sid</ColNames>
       <Primary>1</Primary>

@@ -44,6 +44,7 @@ public class StudentOperations {
         session.close();
     }
 
+    // 查看多条记录
     public void select(){
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
@@ -51,7 +52,7 @@ public class StudentOperations {
         Query<Students> query = session.createQuery(hql, Students.class);
         List<Students> list = query.list();
         for(Students st: list){
-            System.out.println(st.getName() + ":" + st.getAddress() );
+            System.out.println(st);
         }
         transaction.commit();
         session.close();
@@ -67,12 +68,33 @@ public class StudentOperations {
         session.close();
     }
 
+    // 查询单条记录，立马执行SQL语句并返回，记录不存在返回null
+    public void get(){
+        Session session = getSession();
+        Students s = session.get(Students.class, 1);
+        System.out.println(s);
+    }
+
+    // 查询单条记录，待调用非主键字段才执行SQL语句,记录不存在抛出ObjectNotFoundException异常
+    public void load(){
+        Session session = getSession();
+        try{
+            Students s = session.load(Students.class, 1);
+            System.out.println(s);
+        }catch (ObjectNotFoundException ex){
+            ex.printStackTrace();
+        }
+
+
+    }
     public static void main(final String[] args) {
         StudentOperations st = new StudentOperations();
         st.create();
-        st.update();
+//        st.update();
         st.select();
-        st.delete();
+        st.get();
+        st.load();
+//        st.delete();
 
     }
 }

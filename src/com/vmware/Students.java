@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.Objects;
 
@@ -14,6 +15,7 @@ public class Students {
     private String gender;  // 性别
     private Date birthday;  // 出生日期
     private String address; // 家庭住址
+    private Blob picture; // 照片
 
     public Students() {
     }
@@ -78,6 +80,16 @@ public class Students {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Basic
+    @Column(name = "picture")
+    public Blob getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Blob picture) {
+        this.picture = picture;
     }
 
     @Override
